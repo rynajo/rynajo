@@ -113,13 +113,14 @@ nav ul a:hover::after,nav ul a:focus-visible::after{transform:scaleX(1)}
 /* faixa */
 .marquee{background:var(--orange);color:var(--black);overflow:hidden;white-space:nowrap;border-block:1px solid var(--black)}
 .marquee .track{display:inline-flex;gap:40px;padding-block:14px;animation:run 30s linear infinite;font-family:var(--f-display);text-transform:uppercase;font-size:24px;letter-spacing:.02em}
-.marquee .track span::after{content:"✦";margin-left:40px}
+.marquee .track span{display:inline-flex;align-items:center}
+.marquee .track span::after{content:"";display:block;width:22px;height:5px;background:currentColor;margin-left:40px;transform:translateY(-.06em) rotate(-12deg)}
 @keyframes run{to{transform:translateX(-50%)}}
 @media (prefers-reduced-motion:reduce){.marquee .track{animation:none}}
 
 section{position:relative;padding-block:96px;border-bottom:1px solid var(--rule)}
 .sec-label{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);margin:0 0 14px}
-h2.disp{font-size:clamp(48px,8vw,104px)}
+h2.disp{font-size:clamp(48px,8vw,104px);line-height:1.13}
 
 /* agenda */
 .dates{margin-top:40px;border-top:1px solid var(--rule)}
@@ -165,11 +166,11 @@ h2.disp{font-size:clamp(48px,8vw,104px)}
 .cover img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:4px;box-shadow:0 20px 50px rgba(0,0,0,.6)}
 .cover small{display:block;margin-top:10px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ash)}
 .ps-text p{color:var(--ash);max-width:46ch;margin:18px 0 28px}
-.listen{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:36px}
-.listen a{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:16px 18px;border:1px solid var(--rule);border-radius:10px;text-decoration:none;font-weight:700;font-size:14px;transition:border-color .2s,background .2s}
-.listen a:hover{border-color:var(--orange);background:rgba(255,106,19,.08)}
-.listen a span{color:var(--orange)}
-@media (max-width:860px){.ps-grid{grid-template-columns:1fr;gap:32px}.listen{grid-template-columns:repeat(2,1fr)}}
+.listen{margin:32px 0 0;font-size:15px;line-height:2;color:var(--ash)}
+.listen a{color:var(--paper);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(255,106,19,.5);transition:color .2s,border-color .2s}
+.listen a:hover{color:var(--orange);border-color:var(--orange)}
+.listen>span{margin-right:4px}
+@media (max-width:860px){.ps-grid{grid-template-columns:1fr;gap:32px}}
 
 /* sobre + show */
 .split{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
@@ -228,7 +229,7 @@ h2.disp{font-size:clamp(48px,8vw,104px)}
 .cols h3{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin:0 0 10px}
 .cols ul{margin:0;padding:0;list-style:none;display:grid;gap:8px;font-weight:500}
 .cols li{display:flex;gap:10px}
-.cols li::before{content:"✦";font-size:12px;line-height:1.9}
+.cols li::before{content:"";flex:none;width:12px;height:3px;background:currentColor;margin:calc(.5lh - 1.5px) 2px 0 0;transform:rotate(-12deg)}
 .card{background:var(--black);color:var(--paper);border-radius:6px;padding:30px;position:relative;overflow:hidden}
 .card .disp{font-size:44px;margin-bottom:6px}
 .card > p{color:var(--ash);margin:0 0 18px;font-size:15px}
@@ -373,21 +374,23 @@ footer .big .w:last-child{color:var(--orange)}
       </div>
       <p class="when"><span>27.11</span>São Paulo · 22h15</p>
       <div class="btns">
-        <a class="btn solid" href="https://lets.events/e/sextas-de-rock-44">Comprar ingresso →</a>
-        <a class="btn ghost" href="https://onerpm.link/122218138229">Pré-save “Me Promete”</a>
+        <a class="btn solid" href="https://lets.events/e/sextas-de-rock-44">Comprar ingresso</a>
+        <a class="btn ghost" href="https://onerpm.link/122218138229">Pré-save Me Promete</a>
       </div>
     </div>
   </div>
 </header>
 
 <div class="marquee" aria-hidden="true"><div class="track">
-  <span>Uma noite fora da órbita</span><span>Desórbita ao vivo</span><span>Novo single “Me Promete”</span><span>Contratações abertas 26/27</span>
-  <span>Uma noite fora da órbita</span><span>Desórbita ao vivo</span><span>Novo single “Me Promete”</span><span>Contratações abertas 26/27</span>
+  <span>Desórbita ao vivo</span><span>Novo single Me Promete</span><span>Contratações abertas 26/27</span>
+  <span>Desórbita ao vivo</span><span>Novo single Me Promete</span><span>Contratações abertas 26/27</span>
+  <span>Desórbita ao vivo</span><span>Novo single Me Promete</span><span>Contratações abertas 26/27</span>
+  <span>Desórbita ao vivo</span><span>Novo single Me Promete</span><span>Contratações abertas 26/27</span>
 </div></div>
 
 <section id="agenda">
   <div class="wrap">
-    <p class="sec-label">Agenda</p>
+    
     <h2 class="disp">Próximos shows</h2>
     <div class="dates">
       <div class="date">
@@ -396,7 +399,7 @@ footer .big .w:last-child{color:var(--orange)}
           <h3>Desórbita · São Paulo</h3>
           <p>Sextas de Rock #44 · R. da Consolação, 2264, Consolação · portas 19h, show 22h15</p>
         </div>
-        <a class="btn orange" href="https://lets.events/e/sextas-de-rock-44">Ingressos →</a>
+        <a class="btn orange" href="https://lets.events/e/sextas-de-rock-44">Ingressos</a>
       </div>
       <div class="date soon">
         <div class="d">26/27<small>TURNÊ</small></div>
@@ -404,7 +407,7 @@ footer .big .w:last-child{color:var(--orange)}
           <h3>Novas datas em breve</h3>
           <p>Quer levar rynajo pra sua cidade, casa ou festival?</p>
         </div>
-        <a class="btn ghost" href="#contratar">Levar o show →</a>
+        <a class="btn ghost" href="#contratar">Levar o show</a>
       </div>
     </div>
   </div>
@@ -421,19 +424,12 @@ footer .big .w:last-child{color:var(--orange)}
       <div class="cover"><img src="img/capa-me-promete.jpg" alt="Capa do single Me Promete: silhueta de rynajo contra luz laranja" width="900" height="900"><small>Capa · Me Promete</small></div>
     </div>
     <div class="ps-text">
-      <p class="sec-label">Novo single</p>
-      <h2 class="disp">Salve antes de todo mundo</h2>
-      <p id="ps-desc">“Me Promete” sai dia <strong>27.11, às 22h30</strong>, na mesma noite do Desórbita. Faça o pré-save e a música entra na sua biblioteca assim que sair.</p>
+      
+      <h2 class="disp">Me Promete tá chegando</h2>
+      <p id="ps-desc">Sai dia <strong>27.11, às 22h30</strong>, na mesma noite do Desórbita. Faz o pré-save que ela cai na sua biblioteca assim que sair.</p>
       <div class="cd" id="cd" aria-label="Contagem regressiva para o lançamento"><div><b data-u="d">--</b><span>dias</span></div><div><b data-u="h">--</b><span>horas</span></div><div><b data-u="m">--</b><span>min</span></div><div><b data-u="s">--</b><span>seg</span></div></div>
-      <a class="btn orange" href="https://onerpm.link/122218138229">Fazer pré-save →</a>
-      <div class="listen">
-        <a href="https://open.spotify.com/artist/2BeIMZBJkyBswOWjA7dFks">Spotify <span>↗</span></a>
-        <a href="https://www.youtube.com/channel/UCBmjd_giaxYRRkeBwo0rhnA">YouTube <span>↗</span></a>
-        <a href="https://instagram.com/rynaj0">Instagram <span>↗</span></a>
-        <a href="https://tiktok.com/@rynajo">TikTok <span>↗</span></a>
-        <a href="http://twitter.com/rynajo_">X <span>↗</span></a>
-        <a href="https://linktr.ee/rynajo">Todos os links <span>↗</span></a>
-      </div>
+      <a class="btn orange" href="https://onerpm.link/122218138229">Fazer pré-save</a>
+      <p class="listen"><span>Ouça e me acompanhe:</span> <a href="https://open.spotify.com/artist/2BeIMZBJkyBswOWjA7dFks">Spotify</a> · <a href="https://www.youtube.com/channel/UCBmjd_giaxYRRkeBwo0rhnA">YouTube</a> · <a href="https://instagram.com/rynaj0">Instagram</a> · <a href="https://tiktok.com/@rynajo">TikTok</a> · <a href="http://twitter.com/rynajo_">X</a> · <a href="https://linktr.ee/rynajo">Todos os links</a></p>
     </div>
   </div>
 </section>
@@ -442,11 +438,10 @@ footer .big .w:last-child{color:var(--orange)}
   <img class="full-bg" src="img/foto-caixa-lado.jpg" alt="rynajo apoiado numa caixa preta, olhando de lado" width="1400" height="788">
   <div class="wrap">
     <div class="prose">
-      <p class="sec-label">Quem sou eu</p>
-      <h2 class="disp">Muito prazer, eu sou rynajo</h2>
-      <p>Sou cantor, compositor e artista independente. A música faz parte da minha trajetória desde 2019, quando comecei a desenvolver minhas <b>próprias composições</b>.</p>
-      <p>Meu trabalho nasce da vontade de transformar sentimentos, histórias e experiências em música, construindo uma identidade que mistura referências da <b>música brasileira</b> com sonoridades contemporâneas. Além da voz, o ukulele também faz parte da minha expressão musical.</p>
-      <div class="tags"><span class="tag">Pop brasileiro</span><span class="tag">MPB contemporânea</span><span class="tag">Indie pop</span><span class="tag">Pop rock</span></div>
+      
+      <h2 class="disp">Opa, sou o rynajo</h2>
+      <p>Sou cantor e compositor independente, de São Paulo. Escrevo sobre o que eu sinto e transformo isso em música.</p>
+      <p>Não consigo me prender a um gênero só. Tem muito de <b>Brasil</b> no que eu faço, às vezes sai um pop, às vezes outra coisa. Eu gosto mesmo é de misturar.</p>
     </div>
   </div>
 </section>
@@ -455,11 +450,10 @@ footer .big .w:last-child{color:var(--orange)}
   <img class="full-bg" src="img/foto-em-pe.jpg" alt="rynajo em pé sob o refletor laranja" width="1400" height="788">
   <div class="wrap">
       <div class="prose">
-        <p class="sec-label">O show</p>
+        
         <p class="quote">E se, por algumas horas, a gente pudesse <em>sair da própria órbita?</em></p>
-        <p><b>Desórbita</b> é o primeiro show de rynajo. Um convite para deixar o conhecido para trás, escapar um pouco do automático e se permitir sentir tudo aquilo que a música desperta.</p>
-        <p>Entre canções que já fazem parte da nossa história e composições autorais, passando pela MPB, pelo pop e pelo rock, o espetáculo constrói uma atmosfera de intensidade, vulnerabilidade e descoberta.</p>
-        <p>Porque todo palco <b>pode ser um universo</b>. E toda pessoa merece, de vez em quando, sair da própria órbita.</p>
+        <p><b>Desórbita</b> é o meu primeiro show. A ideia é simples: sair um pouco do automático e sentir junto.</p>
+        <p>Tem música pra cantar junto, tem música minha e tem inéditas, que por enquanto só dá pra ouvir ao vivo.</p>
       </div>
   </div>
 </section>
@@ -467,12 +461,12 @@ footer .big .w:last-child{color:var(--orange)}
 <section class="show grain" id="equipe">
   <div class="wrap">
     <div class="crew">
-      <div class="crew-head"><div><p class="sec-label">Quem está comigo</p><h2 class="disp">Instrumentistas</h2></div><p class="crew-sub">As pessoas que fazem o Desórbita acontecer.</p></div>
+      <div class="crew-head"><div><h2 class="disp">Quem toca comigo</h2></div><p class="crew-sub">A banda do Desórbita.</p></div>
       <div class="crew-list">
-        <a class="person" href="https://instagram.com/xicaracaferuim"><span class="name">Tom</span><span class="handle">@xicaracaferuim ↗</span></a>
-        <a class="person" href="https://instagram.com/marinagama_"><span class="name">Marina Gama</span><span class="handle">@marinagama_ ↗</span></a>
-        <a class="person" href="https://instagram.com/matheusocoelho_"><span class="name">Matheus Coelho</span><span class="handle">@matheusocoelho_ ↗</span></a>
-        <a class="person" href="https://instagram.com/bartzzzz"><span class="name">Henrique Barreto</span><span class="handle">@bartzzzz ↗</span></a>
+        <a class="person" href="https://instagram.com/xicaracaferuim"><span class="name">Tom</span><span class="handle">@xicaracaferuim</span></a>
+        <a class="person" href="https://instagram.com/marinagama_"><span class="name">Marina Gama</span><span class="handle">@marinagama_</span></a>
+        <a class="person" href="https://instagram.com/matheusocoelho_"><span class="name">Matheus Coelho</span><span class="handle">@matheusocoelho_</span></a>
+        <a class="person" href="https://instagram.com/bartzzzz"><span class="name">Henrique Barreto</span><span class="handle">@bartzzzz</span></a>
       </div>
     </div>
   </div>
@@ -481,20 +475,20 @@ footer .big .w:last-child{color:var(--orange)}
 <section class="booking" id="contratar">
   <div class="wrap bk-grid">
     <div>
-      <p class="sec-label">Contratação</p>
-      <h2 class="disp">Leve Desórbita para o seu evento</h2>
-      <p class="lede">Cada apresentação é planejada de acordo com o espaço, a proposta e a experiência que queremos proporcionar ao público.</p>
+      
+      <h2 class="disp">Leve o Desórbita pro seu evento</h2>
+      <p class="lede">Toco em casas de show, festivais e eventos. Me conta o que você imagina e a gente monta o show do tamanho do seu espaço.</p>
       <div class="cols">
-        <div><h3>Modalidades</h3><ul><li>Cachê por apresentação</li><li>Participação em bilheteria</li><li>Condições personalizadas para eventos e festivais</li></ul></div>
-        <div><h3>O investimento considera</h3><ul><li>Formação musical</li><li>Duração do espetáculo</li><li>Local e deslocamento</li><li>Estrutura técnica e produção</li></ul></div>
+        <div><h3>Como funciona</h3><ul><li>Cachê fixo</li><li>Participação na bilheteria</li><li>Condições especiais para festivais</li></ul></div>
+        <div><h3>O valor depende de</h3><ul><li>Tamanho da banda</li><li>Duração do show</li><li>Local e deslocamento</li><li>Estrutura técnica</li></ul></div>
       </div>
     </div>
     <div class="card grain">
-      <div class="disp">Vamos conversar?</div>
-      <p>rynajo · shows &amp; booking. Consulte disponibilidade e peça a apresentação comercial.</p>
+      <div class="disp">Me chama</div>
+      <p>Manda a data, a cidade e o local que eu respondo com a disponibilidade e a apresentação completa.</p>
       <div class="row"><div><span class="lbl">E-mail</span><span class="val" id="mail">rynajo@hotmail.com</span></div><button class="copy" type="button" data-copy="mail">Copiar</button></div>
       <div class="row"><div><span class="lbl">Instagram</span><span class="val" id="ig">@rynaj0</span></div><button class="copy" type="button" data-copy="ig">Copiar</button></div>
-      <a class="btn orange" href="https://instagram.com/rynaj0">Chamar no Instagram →</a>
+      <a class="btn orange" href="https://instagram.com/rynaj0">Chamar no Instagram</a>
     </div>
   </div>
 </section>
@@ -524,7 +518,7 @@ footer .big .w:last-child{color:var(--orange)}
   mark('.date','left',.15,.1);
   mark('.media .phone','tilt');mark('.media .cover','scale',0,.25);
   mark('.ps-text > p:not(.sec-label), .ps-text > .btn','',.1,.2);
-  mark('.listen a','',.06,.35);
+  mark('.listen','',0,.35);
   mark('.full .prose > p:not(.sec-label):not(.quote), .full .tags','left',.12,.25);
   mark('.crew-sub','left');mark('.person','',.1,.1);
   mark('.gallery img','scale',.15);
@@ -569,7 +563,7 @@ footer .big .w:last-child{color:var(--orange)}
 })();
 (function(){var c=document.getElementById('cd');if(!c)return;var T=Date.parse('2026-11-27T22:30:00-03:00'),el={};c.querySelectorAll('b').forEach(function(b){el[b.dataset.u]=b});
   function z(n){return n<10?'0'+n:''+n}
-  function t(){var r=Math.max(0,Math.floor((T-Date.now())/1000));if(r<=0){c.style.display='none';var d=document.getElementById('ps-desc');d.innerHTML='“Me Promete” já saiu. Ouça agora em todas as plataformas.';var b=document.querySelector('.ps-text .btn.orange');if(b)b.textContent='Ouvir agora →';var h=document.querySelector('.ps-text h2');if(h)h.textContent='Me Promete já está no ar';return}
+  function t(){var r=Math.max(0,Math.floor((T-Date.now())/1000));if(r<=0){c.style.display='none';var d=document.getElementById('ps-desc');d.innerHTML='Já tá em todas as plataformas. Espero que você goste.';var b=document.querySelector('.ps-text .btn.orange');if(b)b.textContent='Ouvir agora';var h=document.querySelector('.ps-text h2');if(h)h.textContent='Me Promete já saiu';return}
     el.d.textContent=z(Math.floor(r/86400));el.h.textContent=z(Math.floor(r%86400/3600));el.m.textContent=z(Math.floor(r%3600/60));el.s.textContent=z(r%60);setTimeout(t,1000)}
   t()})();
 document.querySelectorAll('.copy').forEach(function(b){
