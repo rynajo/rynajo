@@ -26,6 +26,8 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
+html,body{max-width:100%;overflow-x:hidden}
+@supports (overflow-x:clip){html,body{overflow-x:clip}}
 body{margin:0;background:var(--black);color:var(--paper);font-family:var(--f-body);font-size:17px;line-height:1.6}
 a{color:inherit}
 img{display:block;max-width:100%;height:auto}
