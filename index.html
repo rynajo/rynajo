@@ -544,8 +544,16 @@ footer .big .w:last-child{color:var(--orange)}
 })();
 </script>
 <script>
-(function(){var h=document.querySelector('.logo-h1'),a=h&&h.querySelector('.acento');if(!a||!a.animate||matchMedia('(prefers-reduced-motion: reduce)').matches)return;var busy=false;
-  h.addEventListener('mouseenter',function(){if(busy)return;busy=true;var an=a.animate([{transform:'none'},{transform:'translateY(-70%) rotate(-12deg)',offset:.4},{transform:'translateY(6%) rotate(2deg)',offset:.75},{transform:'none'}],{duration:800,easing:'ease-out'});an.onfinish=an.oncancel=function(){busy=false}});
+(function(){var h=document.querySelector('.logo-h1'),a=h&&h.querySelector('.acento');if(!a)return;
+  var AC=window.AudioContext||window.webkitAudioContext,ctx=null;
+  function pop(){try{if(!AC)return;if(navigator.userActivation&&!navigator.userActivation.hasBeenActive&&!ctx)return;ctx=ctx||new AC();if(ctx.state==='suspended')ctx.resume();var t=ctx.currentTime+.01;
+    var L=ctx.sampleRate*.08|0,n=ctx.createBuffer(1,L,ctx.sampleRate),d=n.getChannelData(0);for(var k=0;k<L;k++){var x=k/ctx.sampleRate;d[k]=(Math.random()*2-1)*(x<.0008?x/.0008:Math.exp(-(x-.0008)/.012))}
+    var b=ctx.createBufferSource(),hp=ctx.createBiquadFilter(),bp=ctx.createBiquadFilter(),g=ctx.createGain();b.buffer=n;hp.type='highpass';hp.frequency.value=1200;bp.type='peaking';bp.frequency.value=2800;bp.Q.value=2;bp.gain.value=9;g.gain.value=.9;b.connect(hp).connect(bp).connect(g).connect(ctx.destination);b.start(t)}catch(e){}}
+  var still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  setTimeout(pop,still?0:2150);
+  var busy=false;
+  function hop(){if(busy)return;busy=true;setTimeout(pop,330);if(still||!a.animate){busy=false;return}var an=a.animate([{transform:'none'},{transform:'translateY(-70%) rotate(-12deg)',offset:.4},{transform:'translateY(6%) rotate(2deg)',offset:.75},{transform:'none'}],{duration:800,easing:'ease-out'});an.onfinish=an.oncancel=function(){busy=false}}
+  h.addEventListener('mouseenter',hop);h.addEventListener('click',hop);h.style.cursor='pointer';
 })();
 (function(){var n=document.querySelector('nav');function u(){n.classList.toggle('scrolled',window.scrollY>40)}u();window.addEventListener('scroll',u,{passive:true})})();
 (function(){
